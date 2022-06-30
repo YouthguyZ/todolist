@@ -1,8 +1,13 @@
-<script setup></script>
+<script setup>
+import useTodosStore from '../store/todos';
+
+const todos=useTodosStore()
+
+</script>
 
 <template>
   <footer class="footer">
-    <span class="todo-count"><strong>0</strong> item left</span>
+    <span class="todo-count"><strong>{{todos.leftCount}}</strong>个待做项</span>
     <ul class="filters">
       <li>
         <a class="selected" href="#/">All</a>

@@ -25,12 +25,27 @@ const useTodosStore=defineStore('todos',{
     del(id){
       // filter 筛选数组方法
       this.list=this.list.filter(item=>item.id!==id)
-    }
+    },
     // 添加数据 在 toheader 中完成
 
-  },
-  getters:{
+    // 全选与反选 (不清晰)
+    checkAll(val){
+      console.log(val);
+      this.list.forEach(item=>item.done=val)
+    }
 
+  },
+
+  // 派生 计算机属性
+  getters:{
+    // 是否选中
+    // every 遍历所有数据 都为 true 则为 true
+    isAll(){
+     return this.list.every(item=>item.done)
+    },
+    leftCount(){
+      return this.list.filter(item=>!item.done).length
+    }
   }
 })
 
