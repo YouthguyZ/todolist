@@ -4,11 +4,16 @@ import {defineStore} from 'pinia'
 const useTodosStore=defineStore('todos',{
   state:()=>{
     return {
-      list:[
-        {id:1,name:'吃饭',done:true},
-        {id:2,name:'睡觉',done:false},
-        {id:3,name:'打球',done:false}
-      ]
+      // list:[
+      //   {id:1,name:'吃饭',done:true},
+      //   {id:2,name:'睡觉',done:false},
+      //   {id:3,name:'打球',done:false}
+      // ],
+
+      // 取本地存储
+      list:JSON.parse(localStorage.getItem('todos')||'[]'),
+      filter:['全部','未完成','已完成'],
+      active:'全部'
     }
   },
   // 修改数据
@@ -36,6 +41,10 @@ const useTodosStore=defineStore('todos',{
     // 清除已完成
     clear(){
       this.list=this.list.filter(item=>!item.done)
+    },
+    // 切换状态
+    changeActive(active){
+      this.active=active
     }
 
   },
@@ -49,6 +58,16 @@ const useTodosStore=defineStore('todos',{
     },
     leftCount(){
       return this.list.filter(item=>!item.done).length
+    },
+    // 底部筛选功能
+    showList(){
+      if(this.active==='未完成'){
+        return this.list.filter(item=>!item.done)
+      }else if(this.active==='已完成'){
+        return this.list.filter(item=>item.done)
+      }else{
+        return this.list
+      }
     }
   }
 })

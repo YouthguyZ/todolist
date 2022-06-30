@@ -9,15 +9,10 @@ const todos=useTodosStore()
   <footer class="footer">
     <span class="todo-count"><strong>{{todos.leftCount}}</strong>个待做项</span>
     <ul class="filters">
-      <li>
-        <a class="selected" href="#/">全部</a>
+      <li v-for="item in todos.filter" :key="item">
+        <a @click="todos.changeActive(item)" :class="{selected:item===todos.active}" href="#/">{{item}}</a>
       </li>
-      <li>
-        <a href="#/active">未完成</a>
-      </li>
-      <li>
-        <a href="#/completed">已完成</a>
-      </li>
+      
     </ul>
     <button class="clear-completed" @click="todos.clear">清除已完成</button>
   </footer>
