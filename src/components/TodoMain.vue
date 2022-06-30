@@ -7,7 +7,7 @@ defineProps({
   }
 })
 // 子向父传值 自定义方法
-const emit =defineEmits(['changeDone'])
+const emit =defineEmits(['changeDone','del'])
 
 // 定义方法
 const hChange=(id)=>{
@@ -25,7 +25,7 @@ const hChange=(id)=>{
         <div class="view">
           <input class="toggle" type="checkbox" @change="hChange(item.id)" :checked="item.done" />
           <label>{{item.name}}</label>
-          <button class="destroy"></button>
+          <button class="destroy" @click="emit('del',item.id)"></button>
         </div>
         <input class="edit" value="Create a TodoMVC template" />
       </li>

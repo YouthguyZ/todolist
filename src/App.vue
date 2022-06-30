@@ -7,6 +7,10 @@ import { ref } from 'vue';
 
 // 目标二：修改状态
 
+// 目标三：删除数据
+
+// 目标四：添加数据
+
 // 定义数据
 const list = ref([
   {
@@ -31,12 +35,26 @@ const hChangeDone=(id)=>{
  const todo=list.value.find(item=>item.id===id)
  todo.done=!todo.done
 }
+
+// 删除数据 根据 id
+const hDel=(id)=>{
+  list.value=list.value.filter(item=>item.id!==id)
+}
+// 添加数据
+const hAdd=(taskName)=>{
+  console.log('add');
+  list.value.push({
+    id:new Date(),
+    name:taskName,
+    done:false
+  })
+}
 </script>
 
 <template>
   <section class="todoapp">
-    <TodoHeader></TodoHeader>
-    <TodoMain :list="list" @changeDone="hChangeDone"></TodoMain>
+    <TodoHeader @add="hAdd"></TodoHeader>
+    <TodoMain :list="list" @changeDone="hChangeDone" @del="hDel"></TodoMain>
     <TodoFooter></TodoFooter>
   </section>
 </template>
