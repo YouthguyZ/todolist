@@ -1,23 +1,21 @@
-<template>
-  <div>
-  <h1> 学习 pinia </h1>
-  <h2>money:{{counter.num}}</h2>
-  <button @click="hAdd">点击我加钱</button>
-  
-  </div>
-</template>
-
 <script setup>
-// 导入store
-import useCounterStore from './store/counter'
+import TodoHeader from './components/TodoHeader.vue'
+import TodoMain from './components/TodoMain.vue'
+import TodoFooter from './components/TodoFooter.vue'
 
-// 使用
-const counter=useCounterStore()
-const hAdd=()=>{
-  counter.add()
-}
+// 一、数据渲染（父传子）
+// 二、修改状态（子传父）
+// 三、删除数据（根据 id）
+// 四、添加数据（）
+
 </script>
 
-<style lang="scss" scoped>
+<template>
+  <section class="todoapp">
+    <TodoHeader></TodoHeader>
+    <TodoMain></TodoMain>
+    <TodoFooter></TodoFooter>
+  </section>
+</template>
 
-</style>
+<style></style>

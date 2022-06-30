@@ -1,11 +1,9 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-import './styles/base.css'
-import './styles/index.css'
 
-// 导入 pinia
+// 导入
 import {createPinia} from 'pinia'
-// 创建 pinia
-const pinia=createPinia()
-// 安装 pinia
+const pinia = createPinia()
+
+// use 安装注册插件
 createApp(App).use(pinia).mount('#app')
