@@ -1,24 +1,36 @@
 <script setup>
+import { computed } from 'vue';
 // 接收父组件值
-defineProps({
+const props = defineProps({
   list:{
     type:Array,
     required:true
   }
 })
 // 子向父传值 自定义方法
-const emit =defineEmits(['changeDone','del'])
+const emit =defineEmits(['changeDone','del','changeAll'])
 
 // 定义方法
 const hChange=(id)=>{
   // console.log('打印');
   emit('changeDone',id)
 }
+
+// 全选反选 计算属性
+const isAll =computed({
+  get(){
+    return props.list.every(item=>item.done)
+  },
+  // 修改时
+  set(val){
+    emit('changeAll',val)
+  }
+})
 </script>
 
 <template>
   <section class="main">
-    <input id="toggle-all" class="toggle-all" type="checkbox" />
+    <input v-model="isAll" id="toggle-all" class="toggle-all" type="checkbox" />
     <label for="toggle-all">Mark all as complete</label>
     <ul class="todo-list">
       <li v-for="item in list" :key="item.id" :class="{completed:item.done}">

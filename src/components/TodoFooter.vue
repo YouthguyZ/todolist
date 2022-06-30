@@ -1,7 +1,7 @@
 <script setup>
 import { computed } from 'vue';
 
-// 接收数据
+// 接收数据  解构 props 出 list
 const {list}=defineProps({
   list:{
     type:Array
