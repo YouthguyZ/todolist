@@ -10,16 +10,16 @@ const todos=useTodosStore()
     <span class="todo-count"><strong>{{todos.leftCount}}</strong>个待做项</span>
     <ul class="filters">
       <li>
-        <a class="selected" href="#/">All</a>
+        <a class="selected" href="#/">全部</a>
       </li>
       <li>
-        <a href="#/active">Active</a>
+        <a href="#/active">未完成</a>
       </li>
       <li>
-        <a href="#/completed">Completed</a>
+        <a href="#/completed">已完成</a>
       </li>
     </ul>
-    <button class="clear-completed">Clear completed</button>
+    <button class="clear-completed" @click="todos.clear">清除已完成</button>
   </footer>
 </template>
 

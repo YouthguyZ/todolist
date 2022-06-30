@@ -32,6 +32,10 @@ const useTodosStore=defineStore('todos',{
     checkAll(val){
       console.log(val);
       this.list.forEach(item=>item.done=val)
+    },
+    // 清除已完成
+    clear(){
+      this.list=this.list.filter(item=>!item.done)
     }
 
   },
