@@ -1,8 +1,23 @@
-<script setup></script>
+<script setup>
+import { computed } from 'vue';
+
+// 接收数据
+const {list}=defineProps({
+  list:{
+    type:Array
+  }
+})
+
+// 计算属性 list 修改后变化
+const leftCount=computed(()=>{
+  // 剩余未做事件 过滤出 done 为 false 事件 然后得出长度就为剩余未完成事件
+  return list.filter(item=>!item.done).length
+})
+</script>
 
 <template>
   <footer class="footer">
-    <span class="todo-count"><strong>0</strong> item left</span>
+    <span class="todo-count"><strong>{{leftCount}}</strong> item left</span>
     <ul class="filters">
       <li>
         <a class="selected" href="#/">All</a>

@@ -55,7 +55,7 @@ const hAdd=(taskName)=>{
   <section class="todoapp">
     <TodoHeader @add="hAdd"></TodoHeader>
     <TodoMain :list="list" @changeDone="hChangeDone" @del="hDel"></TodoMain>
-    <TodoFooter></TodoFooter>
+    <TodoFooter :list="list"></TodoFooter>
   </section>
 </template>
 
