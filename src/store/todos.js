@@ -13,11 +13,18 @@ const useTodosStore =defineStore('todos',{
     }
   },
   // 同步与异步方法
-  actions:()=>{
+  actions:{
+    // 修改状态 因为子组件不能直接修改组件状态数据
+    changeDone(id){
+      // find 方法将相同的挑出来
+      const todo=this.list.find(item=>item.id===id)
+      // 取反赋值
+      todo.done=!todo.done
 
+    }
   },
   // 计算属性
-  getters:()=>{
+  getters:{
 
   }
 })
