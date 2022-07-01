@@ -15,7 +15,7 @@ const todos=useTodosStore()
         <div class="view">
           <input @change="todos.changeDone(item.id)" class="toggle" type="checkbox" :checked="item.done" />
           <label>{{item.name}}</label>
-          <button class="destroy"></button>
+          <button class="destroy" @click="todos.del(item.id)"></button>
         </div>
         <input class="edit" value="Create a TodoMVC template" />
       </li>

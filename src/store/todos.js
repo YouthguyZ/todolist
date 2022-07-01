@@ -20,7 +20,10 @@ const useTodosStore =defineStore('todos',{
       const todo=this.list.find(item=>item.id===id)
       // 取反赋值
       todo.done=!todo.done
-
+    },
+    // 删除数据
+    del(id){
+      this.list=this.list.filter(item=>item.id!==id)
     }
   },
   // 计算属性
