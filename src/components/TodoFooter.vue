@@ -1,20 +1,20 @@
-<script setup>
-import useTodosStore from '../store/todos';
-
-const todos=useTodosStore()
-
-</script>
+<script setup></script>
 
 <template>
   <footer class="footer">
-    <span class="todo-count"><strong>{{todos.leftCount}}</strong>个待做项</span>
+    <span class="todo-count"><strong>0</strong> item left</span>
     <ul class="filters">
-      <li v-for="item in todos.filter" :key="item">
-        <a @click="todos.changeActive(item)" :class="{selected:item===todos.active}" href="#/">{{item}}</a>
+      <li>
+        <a class="selected" href="#/">All</a>
       </li>
-      
+      <li>
+        <a href="#/active">Active</a>
+      </li>
+      <li>
+        <a href="#/completed">Completed</a>
+      </li>
     </ul>
-    <button class="clear-completed" @click="todos.clear">清除已完成</button>
+    <button class="clear-completed">Clear completed</button>
   </footer>
 </template>
 

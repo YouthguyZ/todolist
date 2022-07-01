@@ -1,30 +1,21 @@
 <script setup>
-import { watch } from 'vue';
-import useTodosStore from '../store/todos'
+// 导入定义的模块 pinia
+import useTodosStore from '../store/todos.js';
+
+// 使用 pinia 状态管理数据
 const todos=useTodosStore()
-
-// 本地存储 watch 深度侦听
-// watch(todos.list,()=>{
-//   // console.log('change');
-//   localStorage.setItem('todos',JSON.stringify(todos.list))
-// })
-
-// 本地存储第二种方法
-todos.$subscribe(()=>{
-  localStorage.setItem('todos',JSON.stringify(todos.list))
-})
 </script>
 
 <template>
   <section class="main">
-    <input :checked="todos.isAll" @change="todos.checkAll(!todos.isAll)" id="toggle-all" class="toggle-all" type="checkbox" />
+    <input id="toggle-all" class="toggle-all" type="checkbox" />
     <label for="toggle-all">Mark all as complete</label>
     <ul class="todo-list">
-      <li v-for="item in todos.showList" :key="item.id" :class="{completed:item.done}">
+      <li v-for="item in todos.list" :key="item.id" :class="{completed:item.done}">
         <div class="view">
-          <input @change="todos.hChangeDone(item.id)" class="toggle" type="checkbox" :checked="item.done" />
+          <input class="toggle" type="checkbox" :checked="item.done" />
           <label>{{item.name}}</label>
-          <button class="destroy" @click="todos.del(item.id)"></button>
+          <button class="destroy"></button>
         </div>
         <input class="edit" value="Create a TodoMVC template" />
       </li>
