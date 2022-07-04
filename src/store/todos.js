@@ -24,11 +24,19 @@ const useTodosStore =defineStore('todos',{
     // 删除数据
     del(id){
       this.list=this.list.filter(item=>item.id!==id)
-    }
+    },
+    checkAll(val){
+      console.log(val);
+      this.list.forEach(item=>item.done=val)
+
+    },
   },
   // 计算属性
   getters:{
-
+    // 是否全选 全選后為 true
+    isAll(){
+      return this.list.every(item=>item.done)
+    }
   }
 })
 

@@ -7,6 +7,9 @@ import TodoFooter from './components/TodoFooter.vue'
 // 2.修改状态
 // 3.删除数据
 // 4.添加数据
+// 5.全选与反选
+// 6.底部带做项
+// 
 </script>
 
 <template>

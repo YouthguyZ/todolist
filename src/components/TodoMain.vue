@@ -8,7 +8,7 @@ const todos=useTodosStore()
 
 <template>
   <section class="main">
-    <input id="toggle-all" class="toggle-all" type="checkbox" />
+    <input :checked="todos.isAll" @change="todos.checkAll(!todos.isAll)" id="toggle-all" class="toggle-all" type="checkbox" />
     <label for="toggle-all">Mark all as complete</label>
     <ul class="todo-list">
       <li v-for="item in todos.list" :key="item.id" :class="{completed:item.done}">
